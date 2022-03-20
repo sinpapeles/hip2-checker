@@ -1,13 +1,17 @@
 import { useEffect, useState, FC } from 'react';
 import { useQueryClient } from 'react-query';
 import useDebounce from 'react-use/lib/useDebounce';
+import useSearchParam from 'react-use/lib/useSearchParam';
 import { Address } from './Address';
 import { Status } from './Status';
 import { Token } from './Token';
 
 function App() {
-  const [token, setToken] = useState('HNS');
-  const [value, setValue] = useState('');
+  const initalName = useSearchParam('name') || '';
+  const initalToken = useSearchParam('token') || 'HNS';
+
+  const [token, setToken] = useState(initalToken.toUpperCase());
+  const [value, setValue] = useState(initalName);
   const [name, setName] = useState('');
   const [loading, setLoading] = useState(false);
   const queryClient = useQueryClient();
@@ -18,7 +22,10 @@ function App() {
   const loadData = async () =>
     queryClient.fetchQuery(['hip2', name, token], () =>
       Promise.resolve()
-        .then(() => setLoading(true))
+        .then(() => {
+          setLoading(true);
+          history.pushState({ name, token }, '', `?name=${name}&token=${token}`);
+        })
         .then(() => fetch(`/api?name=${name}&token=${token}`))
         .then((r) => r.json())
         .then((r) => setAddr(r.addr))
