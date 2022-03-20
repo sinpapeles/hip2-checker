@@ -19,7 +19,7 @@ function App() {
     queryClient.fetchQuery(['hip2', name, token], () =>
       Promise.resolve()
         .then(() => setLoading(true))
-        .then(() => fetch(`http://localhost:3001?name=${name}&token=${token}`))
+        .then(() => fetch(`/api?name=${name}&token=${token}`))
         .then((r) => r.json())
         .then((r) => setAddr(r.addr))
         .finally(() => setLoading(false))
