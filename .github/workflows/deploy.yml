@@ -19,7 +19,7 @@ jobs:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
-      - name: Install packages
+      - name: Yarn it!
         run: |
           yarn install
           yarn build
@@ -31,7 +31,7 @@ jobs:
           host: '${{ secrets.HOST }}'
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: 'dist,node_modules'
+          source: 'node_modules/**,dist/**'
           target: '/root/hip2.sinpapeles'
 
       - name: Restart
