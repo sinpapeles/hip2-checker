@@ -33,7 +33,7 @@ jobs:
           host: '${{ secrets.HOST }}'
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: 'node_modules/**,dist/**'
+          source: 'package.json,yarn.lock,dist/**'
           target: '/var/www/node/hip2.sinpapeles'
 
       - name: Restart
@@ -43,4 +43,5 @@ jobs:
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            yarn --cwd /var/www/node/hip2.sinpapeles
             service hip2.sinpapeles restart
