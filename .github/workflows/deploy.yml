@@ -30,7 +30,7 @@ jobs:
           host: '${{ secrets.HOST }}'
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: 'dist,node_modules'
+          source: '*'
           target: '/root/hip2.sinpapeles'
 
       - name: Restart
