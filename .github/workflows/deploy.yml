@@ -43,5 +43,5 @@ jobs:
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            yarn --cwd /var/www/node/hip2.sinpapeles
+            yarn --cwd /var/www/node/hip2.sinpapeles install --production
             service hip2.sinpapeles restart
