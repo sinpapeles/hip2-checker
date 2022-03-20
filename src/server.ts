@@ -20,10 +20,5 @@ app.get('/', (req, res) => {
     });
 });
 
-// @ts-ignore
-if (import.meta.env.PROD) {
-  app.listen(process.env.PORT || 3000);
-  console.log('🚀 listening...');
-}
-
-export const viteNodeApp = app;
+app.listen(process.env.PORT || 3000);
+console.log('🚀 listening...');
