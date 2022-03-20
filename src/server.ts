@@ -1,6 +1,8 @@
 import express from 'express';
 import hip2 from 'hip2-dane';
 
+hip2.setServers([process.env.DNS!]);
+
 const app = express();
 
 app.get('/', (req, res) => {

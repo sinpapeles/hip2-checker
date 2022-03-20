@@ -41,4 +41,4 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             yarn --cwd /root/hip2.sinpapeles
-            service sinpapeles restart
+            service hip2.sinpapeles restart
