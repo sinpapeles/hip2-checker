@@ -62,9 +62,12 @@ function App() {
             )}
           </div>
         </div>
-        <span className="mt-2 text-sm text-gray-400">
-          From <a href="https://sinpapeles.xyz">sinpapeles.xyz</a> - Don't
-          trust. Verify.
+        <span className="mt-2 text-sm text-center text-gray-400 transition duration-200 hover:text-gray-200">
+          Don't trust. Verify.
+          <br />
+          <a href="https://sinpapeles.xyz">Sinpapeles</a>
+          {' | '}
+          <a href="https://github.com/sinpapeles/hip2-checker">Source</a>
         </span>
       </div>
     </>
