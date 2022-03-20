@@ -1,6 +1,6 @@
 import { useEffect, useState, FC } from 'react';
 import { useQueryClient } from 'react-query';
-import { useDebounce } from 'react-use';
+import useDebounce from 'react-use/lib/useDebounce';
 import { Address } from './Address';
 import { Status } from './Status';
 import { Token } from './Token';
