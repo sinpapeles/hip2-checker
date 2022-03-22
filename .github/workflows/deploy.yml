@@ -23,9 +23,6 @@ jobs:
         run: |
           yarn install
           yarn build
-          yarn tsc --esModuleInterop --outDir dist src/server.ts
-          ls -lha dist
-          ls -lha node_modules
 
       - name: Deploy
         uses: appleboy/scp-action@master

@@ -24,7 +24,11 @@ function App() {
       Promise.resolve()
         .then(() => {
           setLoading(true);
-          history.pushState({ name, token }, '', `?name=${name}&token=${token}`);
+          history.pushState(
+            { name, token },
+            '',
+            `?name=${name}&token=${token}`
+          );
         })
         .then(() => fetch(`/api?name=${name}&token=${token}`))
         .then((r) => r.json())
@@ -38,8 +42,8 @@ function App() {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center w-screen h-screen bg-gradient-to-br from-blue-600 to-indigo-600">
-        <div className="p-4 text-center bg-white border border-gray-400 shadow-lg rounded-xl w-96 ">
+      <div className="flex flex-col items-center justify-center min-h-screen p-2 sn:p-0 min-w-screen bg-gradient-to-br from-blue-600 to-indigo-600">
+        <div className="w-full p-4 text-center bg-white border border-gray-400 shadow-lg rounded-xl sm:w-96 ">
           <div className="mb-3 text-3xl font-bold">HIP2 Checker</div>
           <div>
             <div className="flex ">
@@ -69,12 +73,19 @@ function App() {
             )}
           </div>
         </div>
-        <span className="mt-2 text-sm text-center text-gray-400 transition duration-200 hover:text-gray-200">
+        <span className="mt-2 text-sm text-center text-gray-200 transition duration-200 ">
           Don't trust. Verify.
           <br />
-          <a href="https://sinpapeles.xyz">Sinpapeles</a>
+          <a className="hover:text-white" href="https://sinpapeles.xyz">
+            Sinpapeles
+          </a>
           {' | '}
-          <a href="https://github.com/sinpapeles/hip2-checker">Source</a>
+          <a
+            className="hover:text-white"
+            href="https://github.com/sinpapeles/hip2-checker"
+          >
+            Source
+          </a>
         </span>
       </div>
     </>

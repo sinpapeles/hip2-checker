@@ -4,14 +4,14 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && yarn tsc --esModuleInterop --outDir dist src/server.ts",
     "preview": "vite preview"
   },
   "dependencies": {
     "@headlessui/react": "^1.5.0",
     "@heroicons/react": "^1.0.6",
     "express": "^4.17.3",
-    "hip2-dane": "^0.2.1",
+    "https-dane": "^0.1.4",
     "react": "^17.0.2",
     "react-copy-to-clipboard": "^5.0.4",
     "react-dom": "^17.0.2",

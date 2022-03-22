@@ -1212,13 +1212,6 @@ hdns@0.8.0:
     binet "~0.3.7"
     bns "~0.15.0"
 
-hip2-dane@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/hip2-dane/-/hip2-dane-0.2.1.tgz#66e28269af2d7dbc7a6a0d39cfcdb2c56657203b"
-  integrity sha512-sa8ml+w7YxEjZKkQYfN7rBngYMsdtmbriGrsIMO7ArnKxRSg2nmdKWA8iIl/4nSFAG8jayQh8hd9odBIsSmLWg==
-  dependencies:
-    https-dane "0.1.4"
-
 http-errors@1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/http-errors/-/http-errors-1.8.1.tgz#7c3f28577cbc8a207388455dbd62295ed07bd68c"
@@ -1230,7 +1223,7 @@ http-errors@1.8.1:
     statuses ">= 1.5.0 < 2"
     toidentifier "1.0.1"
 
-https-dane@0.1.4:
+https-dane@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/https-dane/-/https-dane-0.1.4.tgz#727646aba85a9ba95174d8a40bd4fbc47dd68729"
   integrity sha512-1sv2jpnZSlO9WL+uySz6IntOYvez2SIOROLJ4A+Vw9oPXNz14raytj9PyLyCGnx/rz9qlVdt8sU7/bRQaEuPWA==
