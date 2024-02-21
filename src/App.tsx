@@ -1,41 +1,40 @@
-import { useEffect, useState, FC } from 'react';
-import { useQueryClient } from 'react-query';
+import { useEffect, useState } from 'react';
+
+import { useQuery } from '@tanstack/react-query';
 import useDebounce from 'react-use/lib/useDebounce';
 import useSearchParam from 'react-use/lib/useSearchParam';
-import { Address } from './Address';
+import { ResultBox } from './ResultBox';
 import { Status } from './Status';
 import { Token } from './Token';
-import Skeleton from 'react-loading-skeleton';
 
 function App() {
-  const initalName = useSearchParam('name') || '';
-  const initalToken = useSearchParam('token') || 'HNS';
+  const initialName = useSearchParam('name') || '';
+  const initialToken = useSearchParam('token') || 'HNS';
 
-  const [token, setToken] = useState(initalToken.toUpperCase());
-  const [value, setValue] = useState(initalName);
+  const [token, setToken] = useState(initialToken.toUpperCase());
+  const [value, setValue] = useState(initialName);
   const [name, setName] = useState('');
-  const [loading, setLoading] = useState(false);
-  const queryClient = useQueryClient();
   const [addr, setAddr] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const { refetch } = useQuery({
+    queryKey: [token, name],
+    queryFn: () =>
+      fetch(`/api?name=${name}&token=${token}`).then((r) => {
+        if (!r.ok) throw new Error('Network response was not ok');
+        return r.json();
+      }),
+    enabled: false,
+  });
 
   useDebounce(() => setName(value), 350, [value]);
 
-  const loadData = async () =>
-    queryClient.fetchQuery(['hip2', name, token], () =>
-      Promise.resolve()
-        .then(() => {
-          setLoading(true);
-          history.pushState(
-            { name, token },
-            '',
-            `?name=${name}&token=${token}`
-          );
-        })
-        .then(() => fetch(`/api?name=${name}&token=${token}`))
-        .then((r) => r.json())
-        .then((r) => setAddr(r.addr))
-        .finally(() => setLoading(false))
-    );
+  const loadData = async () => {
+    setLoading(true);
+    const { data } = await refetch();
+    setAddr(data.addr);
+    setLoading(false);
+  };
 
   useEffect(() => {
     if (name) loadData();
@@ -61,25 +60,7 @@ function App() {
               <Token value={token} onChange={setToken} />
             </div>
             <Status {...{ name, loading, setValue, addr }} />
-            {loading && (
-              <div className="py-5">
-                <Skeleton height={35} />
-                <Skeleton height={35} />
-                <Skeleton height={15} width={100} className="mb-5" />
-                <Skeleton height={220} width={220} />
-              </div>
-            )}
-            {addr && (
-              <>
-                <Address value={addr} />
-                <div className="flex justify-center py-5">
-                  <img
-                    src={`https://api.qrserver.com/v1/create-qr-code/?data=${addr}&size=220x220&margin=0`}
-                    alt=""
-                  />
-                </div>
-              </>
-            )}
+            {(loading || addr) && <ResultBox addr={addr} />}
           </div>
         </div>
         <span className="mt-2 text-sm text-center text-gray-200 transition duration-200 ">

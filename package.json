@@ -10,13 +10,13 @@
   "dependencies": {
     "@headlessui/react": "^1.5.0",
     "@heroicons/react": "^1.0.6",
+    "@tanstack/react-query": "^5.22.2",
     "express": "^4.17.3",
     "hip2-dane": "github:sinpapeles/hip2-dane#02868f66feeaa8e73f14cf86ed99fa2de46652c5",
-    "react": "^17.0.2",
+    "react": "^18.2.0",
     "react-copy-to-clipboard": "^5.0.4",
-    "react-dom": "^17.0.2",
+    "react-dom": "^18.2.0",
     "react-loading-skeleton": "^3.4.0",
-    "react-query": "^3.34.16",
     "react-use": "^17.3.2"
   },
   "devDependencies": {
