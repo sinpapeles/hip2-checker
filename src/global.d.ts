@@ -14,3 +14,7 @@ declare module 'react-copy-to-clipboard' {
   const CopyToClipboard: React.FC<Props>;
   export { CopyToClipboard };
 }
+
+declare module umami {
+  export function track(event: string, data: Record<string, string>): void;
+}

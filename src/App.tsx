@@ -32,6 +32,7 @@ function App() {
   useDebounce(() => setName(value), 350, [value]);
 
   const loadData = async () => {
+    umami.track('check', { name, token });
     setLoading(true);
     const { data } = await refetch();
     setAddr(data.addr);
@@ -77,6 +78,13 @@ function App() {
             href="https://github.com/sinpapeles/hip2-checker"
           >
             Source
+          </a>
+          {' | '}
+          <a
+            className="hover:text-white"
+            href="https://hub.docker.com/repository/docker/sinpapeles/hip2-checker"
+          >
+            Docker
           </a>
         </span>
       </div>
