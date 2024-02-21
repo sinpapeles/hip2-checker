@@ -1212,10 +1212,9 @@ hdns@0.8.0:
     binet "~0.3.7"
     bns "~0.15.0"
 
-hip2-dane@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/hip2-dane/-/hip2-dane-0.2.1.tgz#66e28269af2d7dbc7a6a0d39cfcdb2c56657203b"
-  integrity sha512-sa8ml+w7YxEjZKkQYfN7rBngYMsdtmbriGrsIMO7ArnKxRSg2nmdKWA8iIl/4nSFAG8jayQh8hd9odBIsSmLWg==
+"hip2-dane@github:sinpapeles/hip2-dane#02868f66feeaa8e73f14cf86ed99fa2de46652c5":
+  version "0.4.2"
+  resolved "https://codeload.github.com/sinpapeles/hip2-dane/tar.gz/02868f66feeaa8e73f14cf86ed99fa2de46652c5"
   dependencies:
     https-dane "0.1.4"
 
@@ -1230,7 +1229,7 @@ http-errors@1.8.1:
     statuses ">= 1.5.0 < 2"
     toidentifier "1.0.1"
 
-https-dane@0.1.4, https-dane@^0.1.4:
+https-dane@0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/https-dane/-/https-dane-0.1.4.tgz#727646aba85a9ba95174d8a40bd4fbc47dd68729"
   integrity sha512-1sv2jpnZSlO9WL+uySz6IntOYvez2SIOROLJ4A+Vw9oPXNz14raytj9PyLyCGnx/rz9qlVdt8sU7/bRQaEuPWA==
@@ -1706,6 +1705,11 @@ react-is@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+
+react-loading-skeleton@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/react-loading-skeleton/-/react-loading-skeleton-3.4.0.tgz#c71a3a17259d08e4064974aa0b07f150a09dfd57"
+  integrity sha512-1oJEBc9+wn7BbkQQk7YodlYEIjgeR+GrRjD+QXkVjwZN7LGIcAFHrx4NhT7UHGBxNY1+zax3c+Fo6XQM4R7CgA==
 
 react-query@^3.34.16:
   version "3.34.16"
