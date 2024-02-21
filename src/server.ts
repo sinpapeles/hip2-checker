@@ -5,7 +5,10 @@ hip2.setServers(process.env.DNS!?.split(','));
 
 const app = express();
 
-app.get('/', (req, res) => {
+// public folder
+app.use(express.static('./'));
+
+app.get('/api', (req, res) => {
   const name = req.query.name as string;
   const token = (req.query.token as string) || 'HNS';
   res.header('Access-Control-Allow-Origin', '*');
