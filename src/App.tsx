@@ -32,6 +32,7 @@ function App() {
   useDebounce(() => setName(value), 350, [value]);
 
   const loadData = async () => {
+    if (!name) return;
     setLoading(true);
     const { data } = await refetch();
     setAddr(data?.addr || '');
@@ -40,7 +41,7 @@ function App() {
   };
 
   useEffect(() => {
-    if (name) loadData();
+    loadData();
   }, [name, token]);
 
   return (
@@ -58,12 +59,20 @@ function App() {
                 onChange={({ currentTarget }) => {
                   setValue(currentTarget.value);
                   setAddr('');
+                  setName('');
                 }}
               />
               <Token value={token} onChange={setToken} />
             </div>
-            <Status {...{ name, loading, setValue, addr }} />
-            {(loading || addr) && <ResultBox addr={addr} />}
+            <Status
+              {...{
+                name,
+                loading,
+                setValue,
+                addr,
+              }}
+            />
+            <ResultBox addr={addr} />
           </div>
         </div>
         <span className="mt-2 text-sm text-center text-gray-200 transition duration-200 ">
