@@ -32,11 +32,11 @@ function App() {
   useDebounce(() => setName(value), 350, [value]);
 
   const loadData = async () => {
-    umami.track('check', { name, token });
     setLoading(true);
     const { data } = await refetch();
     setAddr(data?.addr || '');
     setLoading(false);
+    window.history.pushState({}, '', `?name=${name}&token=${token}`);
   };
 
   useEffect(() => {
