@@ -24,6 +24,8 @@ function App() {
         if (!r.ok) throw new Error('Network response was not ok');
         return r.json();
       }),
+    retry: 3,
+    retryDelay: 1,
     enabled: false,
   });
 
