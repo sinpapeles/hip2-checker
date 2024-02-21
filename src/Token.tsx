@@ -18,10 +18,10 @@ export const Token: FC<Props> = ({ value, onChange }) => {
 
   const onClose = (token?: string) => {
     if (token && tokens) {
-      onChange(token);
       if (!tokens.includes(token)) {
         setTokens([...tokens, token].sort());
       }
+      onChange(token);
     }
     setOpen(false);
   };
@@ -47,7 +47,7 @@ export const Token: FC<Props> = ({ value, onChange }) => {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0 w-20 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Menu.Items className="absolute right-0 w-20 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none  z-10">
             <div className="px-1 py-1 ">
               {tokens!.map((token) => (
                 <Menu.Item key={token}>
