@@ -5,6 +5,7 @@ import useSearchParam from 'react-use/lib/useSearchParam';
 import { Address } from './Address';
 import { Status } from './Status';
 import { Token } from './Token';
+import Skeleton from 'react-loading-skeleton';
 
 function App() {
   const initalName = useSearchParam('name') || '';
@@ -60,6 +61,14 @@ function App() {
               <Token value={token} onChange={setToken} />
             </div>
             <Status {...{ name, loading, setValue, addr }} />
+            {loading && (
+              <div className="py-5">
+                <Skeleton height={35} />
+                <Skeleton height={35} />
+                <Skeleton height={15} width={100} className="mb-5" />
+                <Skeleton height={220} width={220} />
+              </div>
+            )}
             {addr && (
               <>
                 <Address value={addr} />
