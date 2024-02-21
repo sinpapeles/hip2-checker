@@ -10,7 +10,11 @@ interface Props {
 }
 export const Token: FC<Props> = ({ value, onChange }) => {
   const [open, setOpen] = useState(false);
-  const [tokens, setTokens] = useLocalStorage('tokens', ['BTC', 'ETH', 'HNS']);
+  const [tokens, setTokens] = useLocalStorage<string[]>('tokens', [
+    'BTC',
+    'ETH',
+    'HNS',
+  ]);
 
   const onClose = (token?: string) => {
     if (token && tokens) {
