@@ -82,7 +82,7 @@ function App() {
           {' | '}
           <a
             className="hover:text-white"
-            href="https://hub.docker.com/repository/docker/sinpapeles/hip2-checker"
+            href="https://hub.docker.com/r/sinpapeles/hip2-checker"
           >
             Docker
           </a>
