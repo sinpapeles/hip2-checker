@@ -14,7 +14,7 @@ export const Status: FC<Props> = ({ addr, loading, name, setValue }) => (
         className="text-sm text-gray-500 cursor-pointer"
         onClick={() => setValue('iamfernando')}
       >
-        Example: iamfernando
+        Example: falci.me
       </span>
     )}
     {!addr && !loading && name && (

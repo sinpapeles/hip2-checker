@@ -35,7 +35,7 @@ function App() {
     umami.track('check', { name, token });
     setLoading(true);
     const { data } = await refetch();
-    setAddr(data.addr);
+    setAddr(data?.addr || '');
     setLoading(false);
   };
 
