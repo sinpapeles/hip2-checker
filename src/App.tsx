@@ -19,11 +19,17 @@ function App() {
 
   const { refetch } = useQuery({
     queryKey: [token, name],
-    queryFn: () =>
-      fetch(`/api?name=${name}&token=${token}`).then((r) => {
+    queryFn: () => {
+      const controller = new AbortController();
+      const { signal } = controller;
+
+      setTimeout(() => controller.abort(), 3000);
+
+      return fetch(`/api?name=${name}&token=${token}`, { signal }).then((r) => {
         if (!r.ok) throw new Error('Network response was not ok');
         return r.json();
-      }),
+      });
+    },
     retry: 3,
     retryDelay: 1,
     enabled: false,
@@ -34,9 +40,13 @@ function App() {
   const loadData = async () => {
     if (!name) return;
     setLoading(true);
-    const { data } = await refetch();
-    setAddr(data?.addr || '');
-    setLoading(false);
+    try {
+      const { data } = await refetch();
+      setAddr(data?.addr || '');
+    } finally {
+      setLoading(false);
+    }
+
     window.history.pushState({}, '', `?name=${name}&token=${token}`);
   };
 
